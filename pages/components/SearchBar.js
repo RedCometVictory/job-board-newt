@@ -88,7 +88,7 @@ const SearchBar = ({onSearch, amount, btnDisabled, setBtnDisabled}) => {
           </div>
           <div className="search__amount">
             <em>Press Enter to add tags.</em>
-            <em>Then click 'Find Jobs'.</em>
+            <em>Then click &apos;Find Jobs&apos;.</em>
           </div>
         </div>
       </div>
