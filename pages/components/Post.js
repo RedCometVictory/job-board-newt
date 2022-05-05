@@ -74,7 +74,7 @@ const Post = ({job}) => {
           </div>
           <div className="post__desc-tags">
             <div className="tags">
-              {job.keywords.map((keyword, index) => (
+              {job?.keywords.map((keyword, index) => (
                 <p onClick={() => addTag(keyword)} key={index}>{keyword}</p>
               ))}
             </div>
