@@ -90,7 +90,7 @@ header {
     outline: none;
   }
   &__tag-list-container {
-    margin: 0.4rem 0 0.6rem 0;
+    margin: 1.4rem 0 3.0rem 0;
     background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
@@ -559,6 +559,15 @@ header {
 
 // ##################################################
 
+@media (min-width: 204px) {
+  .navbar {
+    .sub-title {
+      margin: 8px 10px 0 12px;
+    }
+  }
+}
+// ##################################################
+
 @media (min-width: 282px) {
   .navbar {
     .sub-title {
@@ -569,6 +578,11 @@ header {
 // ##################################################
 
 @media (min-width: 340px) {
+  .tag {
+    &__tag-list-container {
+      margin: 0.6rem 0 0.6rem 0;
+    }
+  }
   .spinner {
     margin: 12rem 0 0 0;
   }
