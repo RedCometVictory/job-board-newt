@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Link from "next/link";
 import { createInitials } from '../../util/imageSet';
 import { useAppContext } from '../../context/Store';
 import ReactTimeAgo from 'react-time-ago';
@@ -58,7 +57,7 @@ const Post = ({job}) => {
             <div className="post__position">
               <div>
                 <h3 className="title">
-                  <Link href={job?.url}>{job?.role}</Link>
+                  <a href={job?.url}>{job?.role}</a>
                 </h3>
               </div>
             </div>
