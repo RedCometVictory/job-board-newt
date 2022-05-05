@@ -1,14 +1,8 @@
 import { useState } from 'react';
 import { createInitials } from '../../util/imageSet';
 import { useAppContext } from '../../context/Store';
-import ReactTimeAgo from 'react-time-ago';
-// import Image from "next/image";
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
-// import ru from 'javascript-time-ago/locale/ru.json'
+import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
-TimeAgo.addDefaultLocale(en)
-// TimeAgo.addLocale(ru)
 const Post = ({job}) => {
   let [initials, setIntitials] = useState(false);
   let { state, dispatch } = useAppContext();
@@ -63,7 +57,12 @@ const Post = ({job}) => {
             </div>
             <div className="post__stats">
               <div>
-                <p><ReactTimeAgo date={Date.parse(job?.date_posted)} locale="en-US"/></p>
+                <p>
+                  <TimeAgo
+                    datetime={Date.parse(job?.date_posted)}
+                    locale='en_US'
+                  />
+                </p>
                 <p className="bullet">&bull;</p>
                 <p>{job?.remote ? "Remote" : "Non-Remote"}</p>
                 <p className="bullet">&bull;</p>
