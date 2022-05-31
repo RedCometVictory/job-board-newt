@@ -18,23 +18,33 @@ const SearchBar = ({onSearch, amount, btnDisabled, setBtnDisabled}) => {
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const addTags = e => {
-    if (e.key === 'Enter' &&  e.target.value !== "") {
+    if (e.key === 'Enter' && e.target.value !== "") {
       let tag = e.target.value;
       tag = tag.trim();
       dispatch({type: 'SET_TAG', payload: tag});
-      if (setBtnDisabled) setBtnDisabled(false);
-      e.target.value = "";
+      setFormData({...formData, search: ''});
     };
   };
 
   const searchSubmitHandler = async (e) => {
     e.preventDefault();
-    let searchTerms = state.tags;
-    searchTerms = searchTerms.map(idx => idx.trim());
-    searchTerms = searchTerms.join("+");
-    searchTerms = searchTerms.replace(/\s/g, "+");
-    formData.search = searchTerms;
-    await onSearch(formData);
+    if (state.tags.length > 0) {
+      let searchTerms = state.tags;
+      setFormData({...formData, search: ''});
+      searchTerms = searchTerms.map(idx => idx.trim());
+      searchTerms = searchTerms.join("+");
+      searchTerms = searchTerms.replace(/\s/g, "+");
+      formData.search = searchTerms;
+      await onSearch(formData);
+    }
+    if (formData.search) {
+      let searchTerms = formData.search;
+      setFormData({...formData, search: ''});
+      searchTerms = searchTerms.replace(/[,.]/g,'');
+      searchTerms = searchTerms.replace(/\s/g, "+");
+      formData.search = searchTerms;
+      await onSearch(formData);
+    }
   };
 
   return (
@@ -46,7 +56,10 @@ const SearchBar = ({onSearch, amount, btnDisabled, setBtnDisabled}) => {
               <input
                 className="tag__input"
                 type="text"
+                name={"search"}
                 placeholder='Search...'
+                value={search}
+                onChange={e => onChange(e)}
                 onKeyUp={e => addTags(e)}
               />
             </div>

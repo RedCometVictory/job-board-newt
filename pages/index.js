@@ -75,7 +75,7 @@ const Home = (props) => {
       dispatch({type: "SET_JOBS", payload: newJobs.results});
     })
     .then(() => setLoading(false))
-    .catch(error => console.log(error))
+    .catch(error => console.error(error))
   };
 
   return (

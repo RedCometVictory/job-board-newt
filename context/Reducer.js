@@ -50,12 +50,12 @@ export const Reducer = (state, action) => {
       return {
         ...state,
         tags: [...state.tags, action.payload]
-        // tags: [...action.payload, ...tags]
       };
     case 'REMOVE_TAG':
       return {
         ...state,
-        tags: [...state.tags.filter(tag => state.tags.indexOf(tag) !== action.payload)]
+        tags: state.tags.filter((tag, index) => index !== action.payload)
+
       };
     case 'SET_JOBS':
       return {

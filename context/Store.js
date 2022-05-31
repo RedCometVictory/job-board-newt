@@ -12,14 +12,13 @@ export const StoreProvider = ({ children }) => {
 
   // check if state exists in LS
   useEffect(() => {
-      if (JSON.parse(localStorage.getItem("nwt___state"))) {
-        dispatch({
-          type: "SET_INIT",
-          value: JSON.parse(localStorage.getItem("nwt__state"))
-        });
-      }
-    }, []
-  );
+    if (localStorage.getItem("nwt__state")) {
+      dispatch({
+        type: "SET_INIT",
+        value: JSON.parse(localStorage.getItem("nwt__state"))
+      });
+    }
+  }, []);
 
   useEffect(() => {
     // create LS value as state
